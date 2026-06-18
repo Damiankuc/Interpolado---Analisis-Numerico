@@ -186,7 +186,8 @@ class NumericApp(tk.Tk):
         tk.Label(card_interp, text="Puntos de apoyo (k):", bg="#1e1e24", fg="#a0a0b0", font=("Segoe UI", 9)).grid(row=3, column=0, sticky="w", pady=4)
         self.k_points_spin = tk.Spinbox(card_interp, from_=2, to=20, bg="#282830", fg="#ffffff", buttonbackground="#282830", font=("Segoe UI", 10), bd=0, highlightthickness=1, highlightbackground="#3e3e4a")
         self.k_points_spin.grid(row=3, column=1, sticky="we", padx=5, pady=4)
-        self.k_points_spin.set("4")
+        self.k_points_spin.delete(0, tk.END)
+        self.k_points_spin.insert(0, "4")
         
         card_interp.columnconfigure(1, weight=1)
         
@@ -278,10 +279,12 @@ class NumericApp(tk.Tk):
         self.b_entry.insert(0, "2.0")
         self.y_a_entry.delete(0, tk.END)
         self.y_a_entry.insert(0, "1.0")
-        self.n_steps_spin.set("10")
+        self.n_steps_spin.delete(0, tk.END)
+        self.n_steps_spin.insert(0, "10")
         self.x0_entry.delete(0, tk.END)
         self.x0_entry.insert(0, "0.75")
-        self.k_points_spin.set("4")
+        self.k_points_spin.delete(0, tk.END)
+        self.k_points_spin.insert(0, "4")
         
     def solve_and_update_edo(self):
         try:
@@ -418,7 +421,8 @@ class NumericApp(tk.Tk):
         tk.Label(card_matrix_size, text="Dimensión Matriz (n):", bg="#1e1e24", fg="#eeeeee", font=("Segoe UI", 10, "bold")).pack(side=tk.LEFT, padx=5)
         self.matrix_size_spin = tk.Spinbox(card_matrix_size, from_=2, to=8, width=5, bg="#282830", fg="#ffffff", buttonbackground="#282830", bd=0, highlightthickness=1, highlightbackground="#3e3e4a", command=self.update_matrix_grid)
         self.matrix_size_spin.pack(side=tk.LEFT, padx=10)
-        self.matrix_size_spin.set("3")
+        self.matrix_size_spin.delete(0, tk.END)
+        self.matrix_size_spin.insert(0, "3")
         
         # Contenedor para la grilla dinámica de la matriz
         self.card_matrix = tk.LabelFrame(left_panel, text=" Matriz A ", bg="#1e1e24", fg="#eeeeee",
@@ -555,7 +559,8 @@ class NumericApp(tk.Tk):
             [1.0, 3.0, -1.0],
             [0.0, -1.0, 2.0]
         ]
-        self.matrix_size_spin.set("3")
+        self.matrix_size_spin.delete(0, tk.END)
+        self.matrix_size_spin.insert(0, "3")
         self.update_matrix_grid()
         
         for r in range(3):
